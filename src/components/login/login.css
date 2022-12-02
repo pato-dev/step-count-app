@@ -1,0 +1,136 @@
+.login_container {
+    width: 100%;
+    height: 100%;
+}
+
+.login_container>h1 {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.login_form_container {
+    display: flex;
+    margin: auto;
+    width: 60rem;
+    margin-top: 3.5rem;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+/* .border_left {
+    border-right: .5rem solid skyblue;
+    margin: 0 1rem;
+} */
+
+.login_form_container .left {
+    width: 50%;
+    text-align: center;
+    background-color: transparent;
+}
+
+.left a {
+    text-decoration: none;
+}
+
+.socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials>a>button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    height: 40px;
+    padding: 0 1rem;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: .8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.google_logo {
+    width: 2rem;
+    height: 2rem;
+}
+
+.google_btn {
+    margin-bottom: 20px;
+}
+
+.new_here {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.new_here .create_account {
+    margin-left: 2rem;
+    background-color: skyblue;
+}
+
+.new_here .create_account:hover {
+    opacity: .75;
+}
+
+.right {
+    width: 50%;
+    margin-top: 5rem;
+}
+
+.form_container>input {
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+.form_container>input:focus {
+    outline: none;
+}
+
+.form_container>label {
+    font-weight: 600;
+}
+
+.submit_container {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    width: fit-content;
+    height: 2rem;
+    padding: 0 .5rem;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.green_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: rgb(52, 50, 50);
+    background-color: rgb(57, 231, 57);
+}
+
+.error_msg {
+    width: 370px;
+    padding: 15px;
+    margin: 5px 0;
+    font-size: 12px;
+    background-color: #f34646;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}

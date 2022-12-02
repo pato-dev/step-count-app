@@ -1,0 +1,10 @@
+.counter_container {
+    display: flex;
+    margin: auto;
+    width: 60rem;
+    height: 80vh;
+    margin-top: 2rem;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px 0px;
+    overflow-y: scroll;
+}
+

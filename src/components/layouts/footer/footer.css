@@ -1,0 +1,15 @@
+.main_container-footer {
+    background: #344;
+    width: 100%;
+}
+
+.content {
+    width: 90%;
+    margin: auto;
+    padding: 1rem 0;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
