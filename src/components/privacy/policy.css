@@ -1,0 +1,44 @@
+.policy_container {
+    width: 400px;
+    height: 300px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.policy_container .title {
+    text-align: center;
+    padding-top: .5rem;
+}
+
+.policy_container .body {
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+}
+
+.policy_container .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 1rem;
+}
+
+.policy_container .footer button {
+    border: none;
+    background-color: skyblue;
+    color: white;
+    border-radius: 8px;
+    font-size: 15px;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+.policy_container .footer button:hover {
+    opacity: .8;
+}
+
+#cancelBtn {
+    background-color: crimson;
+}

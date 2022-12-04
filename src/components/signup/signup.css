@@ -100,12 +100,31 @@
 }
 
 .error_msg {
-    width: 370px;
-    padding: 15px;
+    width: 365px !important;
+    padding: 10px !important;
     margin: 5px 0;
     font-size: 1.2rem;
     background-color: #f34646;
     color: white;
     border-radius: 5px;
     text-align: center;
+}
+
+.policy {
+    margin-bottom: 20px;
+}
+
+.policy_btn {
+    margin-left: 0.5rem;
+    color: #000 !important;
+    background-color: lightgreen;
+}
+
+.policy_btn:hover {
+    opacity: .8;
+}
+
+.cont {
+    position: absolute;
+    top: 10%;
 }

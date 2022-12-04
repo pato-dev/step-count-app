@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import './signup.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Policy from '../privacy/Policy';
 
 
-const SignUp = ({ fiestName }) => {
+const SignUp = () => {
+
+    const [policyOpen, setPolicyOpen] = useState(false)
+
     const [data, setData] = useState({
         firstName: '',
         lastName: '',
@@ -37,6 +41,7 @@ const SignUp = ({ fiestName }) => {
         }
     };
 
+
     return (
         <div className='signup_container'>
             <div className='signup_form_container'>
@@ -47,8 +52,9 @@ const SignUp = ({ fiestName }) => {
                     </Link>
                 </div>
                 <div className='right'>
-                    <form action="" className='form_container' onSubmit={handleSubmit}>
+                    <form action="" className='form_container'>
                         <h1>Create Account</h1>
+                        {error && <div className='error_msg'>{error}</div>}
                         <input
                             type="text"
                             placeholder='First Name'
@@ -85,23 +91,28 @@ const SignUp = ({ fiestName }) => {
                             className='input'
                             onChange={handleChange}
                         />
-                        <div className="checkbox_container">
-                            <p> Select your role:</p>
-                            <div className="doctor_checkbox">
-                                <input type="checkbox" id="doctor" name="topping" value="Paneer" />Doctor
-                            </div>
-                            <div className="nurse_checkbox">
-                                <input type="checkbox" id="nurse" name="topping" value="Paneer" />Nurses
+                        <div className='policy'>
+                            <span>
+                                Accept policy?
+                            </span>
+                            <span className="openModalBtn"
+                                onClick={() => {
+                                    setPolicyOpen(!policyOpen);
+                                }}>
+                                <button className='btn policy_btn'>Click here</button>
+                            </span>
+                            <div className="cont">
+                                {policyOpen && <Policy setPolicyOpen={setPolicyOpen} />}
                             </div>
                         </div>
-                        {error && <div className='error_msg'>{error}</div>}
-                        <button type='submit' className='green_btn' >
+
+                        <button onClick={handleSubmit} className='green_btn' >
                             Create Account
                         </button>
                     </form>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

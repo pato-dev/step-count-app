@@ -50,8 +50,9 @@ const Login = () => {
           </div>
         </div>
         <div className='right'>
-          <form action="" className='form_container' onSubmit={handleSubmit}>
+          <form action="" className='form_container'>
             <h2>Login to Your Account</h2>
+            {error && <div className='error_msg'>{error}</div>}
             <input
               type="email"
               placeholder='Enter Email'
@@ -70,8 +71,7 @@ const Login = () => {
               className='input'
               onChange={handleChange}
             />
-            {error && <div className='error_msg'>{error}</div>}
-            <button type='submit' className='btn green_btn' >
+            <button onClick={handleSubmit} className='btn green_btn' >
               Login
             </button>
           </form>

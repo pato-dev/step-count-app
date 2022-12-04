@@ -9,10 +9,9 @@ const Navbar = () => {
     return (
         <nav className="navbar_container">
             <div className="navbar_list_container">
-                <div className="logo">Pato_DevOps</div>
+                <div className="logo">Diabetes Control</div>
                 <div className="navbar_list">
                     <ul>
-                        <li>Home</li>
                         <li>Profile</li>
                         <li>
                             <button className="btn logout_btn" onClick={handleLogout}>Logout</button>

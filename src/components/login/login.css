@@ -17,11 +17,6 @@
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
-/* .border_left {
-    border-right: .5rem solid skyblue;
-    margin: 0 1rem;
-} */
-
 .login_form_container .left {
     width: 50%;
     text-align: center;
@@ -125,7 +120,7 @@
 }
 
 .error_msg {
-    width: 370px;
+    width: 350px;
     padding: 15px;
     margin: 5px 0;
     font-size: 12px;
