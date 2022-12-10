@@ -21,7 +21,7 @@ const Login = () => {
       const url = "http://localhost:8080/api/auth";
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.data);
-      window.location = "/"
+      window.location = "/";
     } catch (error) {
       if (error.response &&
         error.response.status >= 400 &&
@@ -34,12 +34,13 @@ const Login = () => {
 
   return (
     <div className='login_container'>
-      <h1>Google Fitness App</h1>
+      <h1>Fitness App</h1>
       <div className='login_form_container'>
         <div className='left'>
           <div className='socials'>
             <Link to=''>
-              <button type='button' className='google_btn'><span><img src='./assets/Google_icon.webp' alt='google' className='google_logo' /></span> Continue with Google</button>
+              <button type='button' className='google_btn'>
+                <span><img src='./assets/Google_icon.webp' alt='google' className='google_logo' /></span> Continue with Google</button>
             </Link>
           </div>
           <div className="new_here">

@@ -4,10 +4,23 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Policy from '../privacy/Policy';
 
-
 const SignUp = () => {
+    const [policyOpen, setPolicyOpen] = useState(true)
 
-    const [policyOpen, setPolicyOpen] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(true)
+    const [checked] = useState(false)
+
+    const canBeSubmitted = () => {
+        return checked ? setIsDisabled(true) : setIsDisabled(false)
+    }
+
+    const onCheckboxClick = () => {
+        setPolicyOpen(!policyOpen)
+        return canBeSubmitted()
+    }
+
+    const [error, setError] = useState("")
+    const navigate = useNavigate();
 
     const [data, setData] = useState({
         firstName: '',
@@ -15,9 +28,6 @@ const SignUp = () => {
         email: '',
         password: '',
     });
-    const [error, setError] = useState("")
-
-    const navigate = useNavigate();
 
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value })
@@ -41,7 +51,6 @@ const SignUp = () => {
         }
     };
 
-
     return (
         <div className='signup_container'>
             <div className='signup_form_container'>
@@ -54,6 +63,14 @@ const SignUp = () => {
                 <div className='right'>
                     <form action="" className='form_container'>
                         <h1>Create Account</h1>
+                        <div className='policy'>
+                            <span onClick={() => { setPolicyOpen(!policyOpen) }}>
+                                {""}
+                            </span>
+                            <div className="cont">
+                                {policyOpen && <Policy setPolicyOpen={setPolicyOpen} onCheckboxClick={onCheckboxClick} />}
+                            </div>
+                        </div>
                         {error && <div className='error_msg'>{error}</div>}
                         <input
                             type="text"
@@ -91,22 +108,7 @@ const SignUp = () => {
                             className='input'
                             onChange={handleChange}
                         />
-                        <div className='policy'>
-                            <span>
-                                Accept policy?
-                            </span>
-                            <span className="openModalBtn"
-                                onClick={() => {
-                                    setPolicyOpen(!policyOpen);
-                                }}>
-                                <button className='btn policy_btn'>Click here</button>
-                            </span>
-                            <div className="cont">
-                                {policyOpen && <Policy setPolicyOpen={setPolicyOpen} />}
-                            </div>
-                        </div>
-
-                        <button onClick={handleSubmit} className='green_btn' >
+                        <button disabled={isDisabled} onClick={handleSubmit} className='green_btn'>
                             Create Account
                         </button>
                     </form>

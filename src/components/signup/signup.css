@@ -109,22 +109,14 @@
     border-radius: 5px;
     text-align: center;
 }
-
-.policy {
-    margin-bottom: 20px;
-}
-
-.policy_btn {
-    margin-left: 0.5rem;
-    color: #000 !important;
-    background-color: lightgreen;
-}
-
-.policy_btn:hover {
-    opacity: .8;
-}
-
-.cont {
-    position: absolute;
-    top: 10%;
+.policy_container {
+   position: absolute;
+   top: 15%;
+   width: 30rem;
+   height: 20rem;
+   margin-top: 3.5rem;
+   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+   z-index: 999;
+   background-color: white;
+   border-radius: 5px;
 }
