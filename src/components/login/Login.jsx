@@ -75,6 +75,9 @@ const Login = () => {
             <button onClick={handleSubmit} className='btn green_btn' >
               Login
             </button>
+            <button onClick={handleSubmit} className='btn green_btn' >
+              Admin login
+            </button>
           </form>
         </div>
       </div>

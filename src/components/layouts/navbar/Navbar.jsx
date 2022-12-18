@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./navbar.css";
 const Navbar = () => {
 
@@ -12,7 +13,12 @@ const Navbar = () => {
                 <div className="logo">Diabetes Control</div>
                 <div className="navbar_list">
                     <ul>
-                        <li>Profile</li>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/create">Add Records</Link>
+                        </li>
                         <li>
                             <button className="btn logout_btn" onClick={handleLogout}>Logout</button>
                         </li>

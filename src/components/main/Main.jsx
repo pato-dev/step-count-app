@@ -3,7 +3,6 @@ import Navbar from "../layouts/navbar/Navbar"
 import Footer from "../layouts/footer/Footer";
 
 const Main = () => {
-
     return (
         <>
             <Navbar />
