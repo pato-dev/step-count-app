@@ -16,7 +16,6 @@ const Update = () => {
 
     const { id } = useParams()
     const { firstName, lastName, score, HbA1c, meanBlood, glucose } = data;
-    const url = `http://localhost:8080/api/records/update/${id}`
 
     const handleChange = (e) => {
         setData({ ...data, [e.target.name]: e.target.value })
@@ -28,13 +27,13 @@ const Update = () => {
     }
 
     const getDataToUpdate = async () => {
-        const res = await axios.get(url)
+        const res = await axios.get(`http://localhost:8080/api/records/update/${id}`)
         setData(res.data)
     }
 
     const sendDataToAPI = async (e) => {
         e.preventDefault()
-        await axios.put(url, data)
+        await axios.put(`http://localhost:8080/api/records/update/${id}`, data)
         getAllData()
     }
 
