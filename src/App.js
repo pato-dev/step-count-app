@@ -8,7 +8,6 @@ import AddPatient from './components/pages/create/addpatient/AddPatient';
 import AllPatientsTestResult from './components/pages/allRecords/AllPatientsTestResult';
 import AddPatientTestResult from './components/pages/create/addrecord/AddPatientTestResult';
 import UpdatePatientData from './components/pages/update/patientRecord/UpdatePatientData';
-// import Navbar from './components/layouts/navbar/Navbar';
 import UpdateTestResult from './components/pages/update/patientTestResult/UpdateTestResult';
 import AllPatientData from './components/pages/allRecords/AllPatientData';
 import AddTest from './components/pages/update/AddTest';
@@ -17,7 +16,6 @@ function App() {
   const user = localStorage.getItem("token");
   return (
     <>
-      {/* <Navbar /> */}
       <Routes>
         {user && <Route exact path='/' element={<Home />} />}
         <Route exact path='/login' element={<Login />} />
