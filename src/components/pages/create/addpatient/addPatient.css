@@ -1,0 +1,42 @@
+.record_cont {
+    background-image: url('./img/hero.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 50px);
+}
+
+.form_field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.record_header {
+    margin-bottom: 3rem !important;
+}
+
+.error_msg {
+    margin: auto;
+    width: 30rem;
+    margin-bottom: 1rem;
+}
+
+.back__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    height: 3rem;
+    margin: auto;
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.gender__form-field {
+    position: relative;
+    left: -10.5%;
+
+}

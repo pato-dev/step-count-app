@@ -1,13 +1,59 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  scroll-behavior: smooth;
+}
+
+.error_msg {
+  width: 338px;
+  padding: 10px;
+  margin: 5px 0;
+  font-size: 1rem;
+  background-color: #f34646;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.app__cont {
+  background-image: url('./components//assets/hero.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form_field {
+  width: 100%;
+}
+
+.record_header {
+  display: grid;
+  place-items: center;
+  padding-top: 2rem;
+}
+
+.form_field input {
+  width: 30rem !important;
+}
+
+.back__btn {
+  display: flex;
+  place-content: center;
+  background: #fbbd08;
+  width: 5rem;
+  margin: 1rem;
+  padding: .5rem 2rem;
+  border-radius: .2rem;
+  color: rgb(42, 40, 40);
+  font-size: larger;
+  font-weight: 600;
+}
+
+.back__btn:hover {
+  opacity: .8;
+  color: black;
 }

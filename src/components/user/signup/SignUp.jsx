@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './signup.css';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Policy from '../privacy/Policy';
+import Policy from '../../pages/privacy/Policy';
 
 const SignUp = () => {
     const [policyOpen, setPolicyOpen] = useState(true)
@@ -26,6 +26,9 @@ const SignUp = () => {
         firstName: '',
         lastName: '',
         email: '',
+        phone: '',
+        gender: '',
+        role: '',
         password: '',
     });
 
@@ -33,12 +36,13 @@ const SignUp = () => {
         setData({ ...data, [input.name]: input.value })
     };
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
             const url = "http://localhost:8080/api/users";
             const { data: res } = await axios.post(url, data);
-            navigate('/login')
+            navigate('/')
             console.log(res.message)
             res.save()
         } catch (error) {
@@ -62,7 +66,9 @@ const SignUp = () => {
                 </div>
                 <div className='right'>
                     <form action="" className='form_container'>
-                        <h1>Create Account</h1>
+                        <center>
+                            <h1>Create Account</h1>
+                        </center>
                         <div className='policy'>
                             <span onClick={() => { setPolicyOpen(!policyOpen) }}>
                                 {""}
@@ -100,6 +106,15 @@ const SignUp = () => {
                             onChange={handleChange}
                         />
                         <input
+                            type="phone"
+                            placeholder='Phone'
+                            name='phone'
+                            value={data.phone}
+                            required
+                            className='input'
+                            onChange={handleChange}
+                        />
+                        <input
                             type="password"
                             placeholder='Password'
                             name='password'
@@ -108,9 +123,31 @@ const SignUp = () => {
                             className='input'
                             onChange={handleChange}
                         />
-                        <button disabled={isDisabled} onClick={handleSubmit} className='green_btn'>
-                            Create Account
-                        </button>
+
+                        <div className='input'>
+                            <label>Gender:</label>
+                            <select name="gender" onChange={e => handleChange(e)}>
+                                <option value="">Choose gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Other</option>
+                            </select>
+                        </div>
+                        <div className='input'>
+                            <label>Roles:</label>
+                            <select name="role" onChange={e => handleChange(e)}>
+                                <option value="">Assign role</option>
+                                <option value="1">Patient</option>
+                                <option value="2">Doctor</option>
+                                <option value="3">Admin</option>
+                            </select>
+                        </div>
+                        <center>
+                            <button disabled={isDisabled} onClick={handleSubmit} className='green_btn'>
+                                Create Account
+                            </button>
+                        </center>
+
                     </form>
                 </div>
             </div >

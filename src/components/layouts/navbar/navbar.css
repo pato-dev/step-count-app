@@ -2,7 +2,6 @@
     width: 100%;
     height: 100%;
     background: rgb(15, 158, 215);
-    color: whitesmoke;
 }
 
 .navbar_list_container {
@@ -12,6 +11,15 @@
     align-items: center;
     width: 90%;
     margin: auto;
+}
+
+.navbar_list_container a {
+    color: aliceblue;
+}
+
+.navbar_list_container a:hover {
+    color: aliceblue;
+    opacity: .8;
 }
 
 .navbar_list>ul {
@@ -25,11 +33,19 @@
     margin: 0 2rem;
 }
 
-.list_container>ul>li:hover {
+.logout_btn {
+    background: transparent;
+    border: none;
+    color: whitesmoke;
+}
+
+.logout_btn:hover {
+    cursor: pointer;
     opacity: .8;
 }
 
-.logout_btn {
-    background: transparent;
-    border: 1px whitesmoke solid;
+@media screen and (max-width:426px) {
+    .navbar_list>ul {
+        display: none;
+    }
 }

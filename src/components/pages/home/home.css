@@ -6,7 +6,7 @@
     height: 91vh;
     margin-top: .17rem;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px 0px;
-    /* overflow-y: scroll; */
+    background-image: url('../../assets/1.png');
 }
 
 .counter_container h2 {

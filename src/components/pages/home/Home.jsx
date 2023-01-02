@@ -1,8 +1,7 @@
-import "./main.css";
-import Navbar from "../layouts/navbar/Navbar"
-import Footer from "../layouts/footer/Footer";
+import Navbar from "../../layouts/navbar/Navbar";
+import "./home.css";
 
-const Main = () => {
+const Home = () => {
     return (
         <>
             <Navbar />
@@ -27,9 +26,8 @@ const Main = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }
 
-export default Main
+export default Home

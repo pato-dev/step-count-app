@@ -75,8 +75,12 @@
 }
 
 .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50%;
-    margin-top: 5rem;
+    /* margin: auto; */
+    /* margin-top: 5rem; */
 }
 
 .form_container>input {
@@ -117,15 +121,4 @@
     font-size: 16px;
     color: rgb(52, 50, 50);
     background-color: rgb(57, 231, 57);
-}
-
-.error_msg {
-    width: 350px;
-    padding: 15px;
-    margin: 5px 0;
-    font-size: 12px;
-    background-color: #f34646;
-    color: white;
-    border-radius: 5px;
-    text-align: center;
 }

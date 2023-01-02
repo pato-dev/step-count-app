@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './login.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
+import GoogleIcon from '../../assets/Google_Icon.webp'
 
 const Login = () => {
   const [data, setData] = useState({
@@ -34,13 +34,13 @@ const Login = () => {
 
   return (
     <div className='login_container'>
-      <h1>Fitness App</h1>
+      <h1 style={{ marginTop: "2rem" }}>Fitness App</h1>
       <div className='login_form_container'>
         <div className='left'>
           <div className='socials'>
             <Link to=''>
               <button type='button' className='google_btn'>
-                <span><img src='./assets/Google_icon.webp' alt='google' className='google_logo' /></span> Continue with Google</button>
+                <span><img src={GoogleIcon} className='google_logo' /></span> Continue with Google</button>
             </Link>
           </div>
           <div className="new_here">
@@ -74,9 +74,6 @@ const Login = () => {
             />
             <button onClick={handleSubmit} className='btn green_btn' >
               Login
-            </button>
-            <button onClick={handleSubmit} className='btn green_btn' >
-              Admin login
             </button>
           </form>
         </div>

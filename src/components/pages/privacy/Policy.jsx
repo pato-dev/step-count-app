@@ -1,8 +1,5 @@
-import React from "react";
 import "./policy.css";
-
 const Policy = ({ setPolicyOpen, onCheckboxClick }) => {
-
     return (
         <div className="policy_container">
             <div className="title">
@@ -22,6 +19,4 @@ const Policy = ({ setPolicyOpen, onCheckboxClick }) => {
         </div>
     );
 }
-
 export default Policy
-
