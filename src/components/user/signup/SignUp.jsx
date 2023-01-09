@@ -127,7 +127,7 @@ const SignUp = () => {
                         <div className='input'>
                             <label>Gender:</label>
                             <select name="gender" onChange={e => handleChange(e)}>
-                                <option value="">Choose gender</option>
+                                <option value=""></option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                                 <option value="others">Other</option>
@@ -136,7 +136,7 @@ const SignUp = () => {
                         <div className='input'>
                             <label>Roles:</label>
                             <select name="role" onChange={e => handleChange(e)}>
-                                <option value="">Assign role</option>
+                                <option value=""></option>
                                 <option value="1">Patient</option>
                                 <option value="2">Doctor</option>
                                 <option value="3">Admin</option>

@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, Form, Table } from "semantic-ui-react"
-import Navbar from '../../layouts/navbar/Navbar'
+import Navbar from '../../../layouts/navbar/Navbar'
+import clinical_dummy_data from './dummy';
 
-const AllPatientsTestResult = () => {
-    const [patients, setPatients] = useState([])
+const AllClinicalData = () => {
+    const [clinicalData, setClinicalData] = useState([])
     const [searchResults, setSearchResults] = useState([])
     // const [query, setQuery] = useState('')
     // console.log(query);
@@ -13,7 +14,7 @@ const AllPatientsTestResult = () => {
     const getAllData = async (req, res) => {
         try {
             await axios.get(`http://localhost:8080/api/records/all-test-result`)
-                .then((res) => setPatients(res.data))
+                .then((res) => setClinicalData(res.data))
             console.log(res.data)
         } catch (error) {
             console.log(error, 'Error occured!...')
@@ -27,9 +28,9 @@ const AllPatientsTestResult = () => {
 
     const handleSubmit = (e) => e.preventDefault()
     // const handleSearchChange = (e) => {
-    //     if (!e.target.value) return setSearchResults(patients)
+    //     if (!e.target.value) return setSearchResults(clinicalData)
 
-    //     const resultsArray = patients.filter(post => post.firstName.includes(e.target.value) || post.lastName.includes(e.target.value))
+    //     const resultsArray = clinicalData.filter(post => post.firstName.includes(e.target.value) || post.lastName.includes(e.target.value))
 
     //     setSearchResults(resultsArray)
     //     console.log(resultsArray)
@@ -62,23 +63,27 @@ const AllPatientsTestResult = () => {
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell>S/N</Table.HeaderCell>
-                                <Table.HeaderCell>First Name</Table.HeaderCell>
-                                <Table.HeaderCell>Last Name</Table.HeaderCell>
-                                <Table.HeaderCell>GLUCOSE mmol/L</Table.HeaderCell>
-                                <Table.HeaderCell>HbA1c Result</Table.HeaderCell>
+                                <Table.HeaderCell>Visit Date</Table.HeaderCell>
+                                <Table.HeaderCell>HbA1c</Table.HeaderCell>
+                                <Table.HeaderCell>Blood Pressure</Table.HeaderCell>
+                                <Table.HeaderCell>Weight (Kg)</Table.HeaderCell>
+                                <Table.HeaderCell>BMI</Table.HeaderCell>
+                                <Table.HeaderCell>Prescription</Table.HeaderCell>
                                 <Table.HeaderCell style={{ textAlign: "center" }} >Action</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
 
                         <Table.Body>
-                            {patients.map((data) => {
+                            {clinical_dummy_data.map((data) => {
                                 return (
                                     <Table.Row key={data._id} className="odd_even-bg">
                                         <Table.Cell>{data._id}</Table.Cell>
-                                        <Table.Cell>{data.firstName}</Table.Cell>
-                                        <Table.Cell>{data.lastName}</Table.Cell>
-                                        <Table.Cell>{data.HbA1c}</Table.Cell>
-                                        <Table.Cell>{data.glucose}</Table.Cell>
+                                        <Table.Cell>{data.visit_date}</Table.Cell>
+                                        <Table.Cell>{data.a1c}</Table.Cell>
+                                        <Table.Cell>{data.systolic_blood_pressure}</Table.Cell>
+                                        <Table.Cell>{data.weight}</Table.Cell>
+                                        <Table.Cell>{data.bmi}</Table.Cell>
+                                        <Table.Cell style={{ width: "20rem" }}>{data.prescription}</Table.Cell>
                                         <Table.Cell className='action'>
                                             <Link to={`/record/${data._id}`}>
                                                 <Button color='yellow'>Eligible</Button>
@@ -98,11 +103,11 @@ const AllPatientsTestResult = () => {
                     </Table>
                 </div>
                 <center style={{ marginTop: "2rem" }}>
-                    <Link to="/add-patient" className='back__btn'>Back</Link>
+                    <Link to="/add-participant" className='back__btn'>Back</Link>
                 </center>
             </div>
         </>
     )
 }
 
-export default AllPatientsTestResult
+export default AllClinicalData
