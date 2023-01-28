@@ -2,6 +2,7 @@ import Navbar from "../../layouts/navbar/Navbar";
 import "./home.css";
 
 const Home = () => {
+
     return (
         <>
             <Navbar />
@@ -24,6 +25,7 @@ const Home = () => {
                     <div className="footer">
                         <p>Diabetes Control Project</p>
                     </div>
+
                 </div>
             </div>
         </>

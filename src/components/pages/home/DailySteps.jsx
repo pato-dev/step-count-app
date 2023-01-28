@@ -30,6 +30,7 @@ const AddClinicalData = () => {
         setFormValues({ ...formValues, [name]: value });
     };
     const { visit_date, a1c, systolic_blood_pressure, weight, prescription } = formValues
+    // console.log(formValues)
     const getParticipantData = async () => {
         try {
             const participantData = await axios.get(`http://localhost:8080/api/participants/participant/${id}`)
@@ -41,7 +42,7 @@ const AddClinicalData = () => {
         }
     }
 
-    const bmi = parseInt((weight / (height ** 2)) * 1000)
+    const bmi = (weight / (height ** 2)) * 1000
 
     const handleSubmit = async (e) => {
         try {
@@ -51,6 +52,7 @@ const AddClinicalData = () => {
             const url = "http://localhost:8080/api/clinicals/add-clinical";
             await axios.post(url, newFormValues);
             window.location = '/all_clinicals'
+
         } catch (error) {
             if (error.response &&
                 error.response.status >= 400 &&
@@ -64,7 +66,7 @@ const AddClinicalData = () => {
     useEffect(() => {
         handleSubmit()
         getParticipantData()
-    });
+    }, []);
 
     const validate = (values) => {
         const errors = {};
@@ -113,85 +115,46 @@ const AddClinicalData = () => {
                             </div>
 
                             <div className="field">
-                                <label>Visit Date</label>
+                                <label>Start Date</label>
                                 <input
                                     type="date"
-                                    name="visit_date"
-                                    placeholder="Visit_date"
-                                    value={visit_date}
+                                    name="start_datetime"
+                                    placeholder="Start_datetime"
+                                    value={start_datetime}
                                     onChange={handleChange}
                                 />
                             </div>
-                            <p>{formErrors.visit_date}</p>
-
                             <div className="field">
-                                <label>HaB1c</label>
+                                <label>End Date</label>
                                 <input
-                                    type="number"
-                                    name="a1c"
-                                    placeholder="HaB1c"
-                                    value={a1c}
+                                    type="date"
+                                    name="end_datetime"
+                                    placeholder="End_datetime"
+                                    value={End_datetime}
                                     onChange={handleChange}
                                 />
                             </div>
-                            <p>{formErrors.a1c}</p>
 
                             <div className="field">
-                                <label>Blood Pressure</label>
+                                <label>Step Count</label>
                                 <input
                                     type="number"
-                                    name="systolic_blood_pressure"
-                                    placeholder="Blood pressure"
-                                    value={systolic_blood_pressure}
+                                    name="step_count"
+                                    placeholder="Step Count"
+                                    value={step_count}
                                     onChange={handleChange}
                                 />
                             </div>
-                            <p>{formErrors.systolic_blood_pressure}</p>
-
                             <div className="field">
-                                <label>Height (cm)</label>
+                                <label>Step Goal</label>
                                 <input
                                     type="number"
-                                    name="height"
-                                    placeholder="Height"
-                                    value={height}
-                                />
-                            </div>
-
-                            <div className="field">
-                                <label>Weight (Kg)</label>
-                                <input
-                                    type="number"
-                                    name="weight"
-                                    placeholder="Weight"
-                                    value={weight}
+                                    name="step_goal"
+                                    placeholder="Step Goal"
+                                    value={step_goal}
                                     onChange={handleChange}
                                 />
                             </div>
-                            <p>{formErrors.weight}</p>
-
-                            <div className="field">
-                                <label>Body Mass Index</label>
-                                <input
-                                    type="number"
-                                    name="bmi"
-                                    placeholder="Body mass index"
-                                    value={bmi}
-                                />
-                            </div>
-
-                            <div className="field">
-                                <label>Prescription</label>
-                                <textarea
-                                    type="text"
-                                    name="prescription"
-                                    placeholder="Prescription"
-                                    value={prescription}
-                                    rows={4}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <p>{formErrors.prescription}</p>
                             <div>
                                 <button className="fluid ui button blue" type='submit' onClick={handleSubmit} >Submit</button>
                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: ".5rem" }}>
@@ -211,4 +174,5 @@ const AddClinicalData = () => {
     );
 }
 export default AddClinicalData
+
 

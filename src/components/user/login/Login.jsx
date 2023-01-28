@@ -40,7 +40,7 @@ const Login = () => {
           <div className='socials'>
             <Link to=''>
               <button type='button' className='google_btn'>
-                <span><img src={GoogleIcon} className='google_logo' /></span> Continue with Google</button>
+                <span><img src={GoogleIcon} className='google_logo' alt='google icon' /></span> Continue with Google</button>
             </Link>
           </div>
           <div className="new_here">

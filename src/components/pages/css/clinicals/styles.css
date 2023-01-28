@@ -1,0 +1,50 @@
+/* General styles clinicals*/
+.main_container {
+    background-image: url('../../../assets/hero.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.container>form {
+    width: 35rem;
+    border: 1px solid #dfdfdf;
+    padding: 20px;
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom: .5rem;
+}
+
+.container p {
+    color: rgb(214, 9, 9);
+}
+
+/* General styles end */
+
+
+/* Update section Start */
+
+pre {
+    width: 70%;
+    color: #fff;
+    font-size: larger;
+}
+
+.action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i.icon {
+    margin: auto !important;
+}
+
+/* Update section End */

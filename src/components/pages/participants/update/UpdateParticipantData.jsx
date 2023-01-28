@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import Navbar from '../../../layouts/navbar/Navbar';
 
 const UpdateParticipantData = () => {
+
     const { id } = useParams()
     const [data, setData] = useState({
         name: '',
@@ -12,7 +13,6 @@ const UpdateParticipantData = () => {
         phone_number: '',
         date_of_birth: '',
         gender: '',
-        height: '',
     });
 
     const { name, email, phone_number, date_of_birth, gender, height } = data;
@@ -48,11 +48,12 @@ const UpdateParticipantData = () => {
         <>
             <Navbar />
             <div className="record_cont">
-                <h1 className='record_header'>Update Record</h1>
+                <h1 className='record_header'>Update Participant</h1>
                 <Form className='form_field'>
                     <Form.Field>
                         <label>Full Name:</label>
                         <input
+                            type='text'
                             name='name'
                             value={name}
                             onChange={e => handleChange(e)}
@@ -62,6 +63,7 @@ const UpdateParticipantData = () => {
                     <Form.Field>
                         <label>Email:</label>
                         <input
+                            type='email'
                             name='email'
                             value={email}
                             onChange={e => handleChange(e)}
@@ -71,6 +73,7 @@ const UpdateParticipantData = () => {
                     <Form.Field>
                         <label>Phone Number:</label>
                         <input
+                            type='number'
                             name='phone_number'
                             value={phone_number}
                             onChange={e => handleChange(e)}
@@ -90,6 +93,7 @@ const UpdateParticipantData = () => {
                     <Form.Field>
                         <label>Height:</label>
                         <input
+                            type='number'
                             name='height'
                             value={height}
                             onChange={e => handleChange(e)}
@@ -98,7 +102,7 @@ const UpdateParticipantData = () => {
                     </Form.Field>
                     <Form.Field className='gender__form-field'>
                         <label>Gender:</label>
-                        <select name="gender" onChange={e => handleChange(e)}>
+                        <select name="gender" value={gender} onChange={e => handleChange(e)}>
                             <option value=""></option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>

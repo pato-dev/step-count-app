@@ -8,6 +8,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 .error_msg {
   width: 338px;
   padding: 10px;
@@ -17,13 +18,6 @@ html {
   color: white;
   border-radius: 5px;
   text-align: center;
-}
-
-.app__cont {
-  background-image: url('./components//assets/hero.jpeg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .form_field {
@@ -56,4 +50,8 @@ html {
 .back__btn:hover {
   opacity: .8;
   color: black;
+}
+
+.ui.button {
+  font-size: 500;
 }

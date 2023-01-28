@@ -1,7 +1,9 @@
 .navbar_container {
     width: 100%;
-    height: 100%;
+    height: 4rem;
     background: rgb(15, 158, 215);
+    scroll-behavior: smooth;
+    position: sticky;
 }
 
 .navbar_list_container {

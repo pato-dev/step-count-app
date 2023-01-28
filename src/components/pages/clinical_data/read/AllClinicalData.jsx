@@ -1,60 +1,76 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Form, Table } from "semantic-ui-react"
 import Navbar from '../../../layouts/navbar/Navbar'
-import clinical_dummy_data from './dummy';
+import '../../css/clinicals/styles.css'
+import ScrollButton from '../../../ScrollButton'
 
 const AllClinicalData = () => {
     const [clinicalData, setClinicalData] = useState([])
-    const [searchResults, setSearchResults] = useState([])
-    // const [query, setQuery] = useState('')
-    // console.log(query);
+
+    const { id } = useParams()
+    const [setName] = useState('')
+    const [setEmail] = useState('')
+    const [setHeight] = useState(0)
+
+    const getParticipantData = async () => {
+        try {
+            const participantData = await axios.get(`http://localhost:8080/api/participants/participant/${id}`)
+            setName(participantData.data.name)
+            setHeight(participantData.data.height)
+            setEmail(participantData.data.email)
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const getAllData = async (req, res) => {
         try {
-            await axios.get(`http://localhost:8080/api/records/all-test-result`)
+            await axios.get(`http://localhost:8080/api/clinicals/all-test-result`)
                 .then((res) => setClinicalData(res.data))
-            console.log(res.data)
+            getParticipantData()
         } catch (error) {
             console.log(error, 'Error occured!...')
         }
     }
 
+    // search guery
+    const [query, setQuery] = useState("");
+    const keys = ["name"];
+    const Search = (data) => {
+        return data.filter((item) =>
+            keys.some((key) => item[key].toLowerCase().includes(query))
+        );
+    };
+    const data = Search(clinicalData)
+
     const deleteData = async id => {
-        await axios.delete(`http://localhost:8080/api/records/delete/${id}`)
+        await axios.delete(`http://localhost:8080/api/clinicals/delete/${id}`)
         getAllData()
+        alert('Clinical data result removed successfully!')
     }
-
-    const handleSubmit = (e) => e.preventDefault()
-    // const handleSearchChange = (e) => {
-    //     if (!e.target.value) return setSearchResults(clinicalData)
-
-    //     const resultsArray = clinicalData.filter(post => post.firstName.includes(e.target.value) || post.lastName.includes(e.target.value))
-
-    //     setSearchResults(resultsArray)
-    //     console.log(resultsArray)
-    // }
 
     useEffect(() => {
         getAllData()
-    }, [])
+    },[])
+
     return (
         <>
             <Navbar />
-            <div className="main_continer" style={{ paddingBottom: "2rem" }}>
+            <div className="all_container">
                 <div className='table_cont'>
-                    <div style={{ marginTop: "1rem" }}>
+                    <div>
                         <center><h2>Test Result table</h2></center>
                     </div>
                     <div>
-                        <Form style={{ width: "15rem" }} onSubmit={handleSubmit} >
+                        <Form style={{ width: "15rem" }} >
                             <Form.Field>
                                 <label>Search</label>
                                 <input
                                     type='text'
                                     className='search'
-                                    // onChange={handleSearchChange}
+                                    onChange={(e) => setQuery(e.target.value.toLowerCase())}
                                     placeholder='Search...' />
                             </Form.Field>
                         </Form>
@@ -62,10 +78,11 @@ const AllClinicalData = () => {
                     <Table celled>
                         <Table.Header>
                             <Table.Row>
-                                <Table.HeaderCell>S/N</Table.HeaderCell>
+                                <Table.HeaderCell>Name</Table.HeaderCell>
                                 <Table.HeaderCell>Visit Date</Table.HeaderCell>
                                 <Table.HeaderCell>HbA1c</Table.HeaderCell>
                                 <Table.HeaderCell>Blood Pressure</Table.HeaderCell>
+                                <Table.HeaderCell>Height(cm)</Table.HeaderCell>
                                 <Table.HeaderCell>Weight (Kg)</Table.HeaderCell>
                                 <Table.HeaderCell>BMI</Table.HeaderCell>
                                 <Table.HeaderCell>Prescription</Table.HeaderCell>
@@ -74,25 +91,26 @@ const AllClinicalData = () => {
                         </Table.Header>
 
                         <Table.Body>
-                            {clinical_dummy_data.map((data) => {
+                            {data?.map((data) => {
                                 return (
                                     <Table.Row key={data._id} className="odd_even-bg">
-                                        <Table.Cell>{data._id}</Table.Cell>
+                                        <Table.Cell>{data.name}</Table.Cell>
                                         <Table.Cell>{data.visit_date}</Table.Cell>
                                         <Table.Cell>{data.a1c}</Table.Cell>
                                         <Table.Cell>{data.systolic_blood_pressure}</Table.Cell>
+                                        <Table.Cell>{data.height}</Table.Cell>
                                         <Table.Cell>{data.weight}</Table.Cell>
                                         <Table.Cell>{data.bmi}</Table.Cell>
-                                        <Table.Cell style={{ width: "20rem" }}>{data.prescription}</Table.Cell>
+                                        <Table.Cell>{data.prescription}</Table.Cell>
                                         <Table.Cell className='action'>
-                                            <Link to={`/record/${data._id}`}>
-                                                <Button color='yellow'>Eligible</Button>
+                                            <Link to={`/clinicals/${data._id}`}>
+                                                <Button color='yellow' title='Eligible' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Eligible</Button>
                                             </Link>
                                             <Link to={`/update-result/${data._id}`}>
-                                                <Button color='green'>Update</Button>
+                                                <Button color='green' title='Edit'><i class="edit icon"></i></Button>
                                             </Link>
                                             <Link onClick={() => deleteData(data._id)}>
-                                                <Button color="red">Delete</Button>
+                                                <Button color="red" title='Delete'><i class="trash alternate icon"></i></Button>
                                             </Link>
                                         </Table.Cell>
                                     </Table.Row>
@@ -103,11 +121,11 @@ const AllClinicalData = () => {
                     </Table>
                 </div>
                 <center style={{ marginTop: "2rem" }}>
-                    <Link to="/add-participant" className='back__btn'>Back</Link>
+                    <Link to="/allparticipants" className='back__btn'>Back</Link>
                 </center>
             </div>
+            <ScrollButton />
         </>
     )
 }
-
 export default AllClinicalData
